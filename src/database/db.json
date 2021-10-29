@@ -1,0 +1,25 @@
+{
+  "recommendations": [
+    {
+      "id": "1and3011",
+      "imageURL": "https://s.lubimyczytac.pl/upload/books/3670000/3670880/507959-352x500.jpg",
+      "title": "Inferno",
+      "summary": "Lorem ipsum….",
+      "rating": 5.3
+    },
+    {
+      "id": "2301abc",
+      "imageURL": "https://cdn.shopify.com/s/files/1/0747/3829/products/mL0379_1024x1024.jpg?v=1571444814",
+      "title": "Star Wars: Episode VII - The Force Awakens",
+      "summary": "Lorem ipsum….",
+      "rating": 8.2
+    },
+    {
+      "id": "2302abcd",
+      "imageURL": "https://cdn.shopify.com/s/files/1/0747/3829/products/mL0379_1024x1024.jpg?v=1571444814",
+      "title": "Star Wars: Episode VII - The Force Awakens",
+      "summary": "Lorem ipsum….",
+      "rating": 8.2
+    }
+  ]
+}
