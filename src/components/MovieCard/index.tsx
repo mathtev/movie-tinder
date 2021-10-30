@@ -10,8 +10,11 @@ interface MoviesCardProps {
 const MovieCard: React.FC<MoviesCardProps> = ({ recommendation }) => {
   return (
     <div className="movieCard">
-      <h2>{recommendation.title}</h2>
       <img src={recommendation.imageURL} alt={recommendation.title} />
+      <div className="details">
+        <h2>{recommendation.title}</h2>
+        <p>{recommendation.summary}</p>
+      </div>
     </div>
   );
 };

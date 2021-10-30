@@ -14,6 +14,7 @@ const Layout: React.FC = () => {
     displayLoader: true,
   });
 
+
   // 2 renders for dispatching loader + 1 for changing loader state
   // 1 render for setting data
   // 1 initial render
