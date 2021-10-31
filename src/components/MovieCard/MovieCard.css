@@ -8,6 +8,10 @@
   border: 1px solid #dddddd;
 }
 
+.movieCard:hover {
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.1), 0 3px 3px rgba(0, 0, 0, 0.22);
+}
+
 .details {
   height: 150px;
 }
