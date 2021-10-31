@@ -1,6 +1,4 @@
 import { AxiosRequestConfig } from 'axios';
-import { FetchOpts, useAxios as fetchData } from '../hooks/useAxios';
-import { Recommendation } from './types';
 
 
 export const getRecommendation = {

@@ -16,9 +16,9 @@ interface MoviesDeckProps {
 type Direction = 'left' | 'right' | 'up' | 'down';
 
 const MoviesDeck: React.FC<MoviesDeckProps> = ({ recommendations }) => {
-  const { response, fetchData } = useAxios();
+  const { fetchData } = useAxios();
   const [, dispatchAppState] = useAppState();
-
+  // eslint-disable-next-line 
   const [cards, setCards] = React.useState([...recommendations.reverse()]);
 
   // how many cards will be stacked at each other when component is rendered
@@ -80,7 +80,6 @@ const MoviesDeck: React.FC<MoviesDeckProps> = ({ recommendations }) => {
   };
 
   const handleReject = () => {
-    console.log('reject')
     const card = cards[currentChildRef.current];
     const fetchParams = {...rejectRecommendation, data: card, id: card.id}
     fetchData(fetchParams, {
@@ -93,7 +92,6 @@ const MoviesDeck: React.FC<MoviesDeckProps> = ({ recommendations }) => {
   };
 
   const handleAccept = () => {
-    console.log('Accept');
     const card = cards[currentChildRef.current];
     const fetchParams = {...acceptRecommendation, data: card, id: card.id+'ss'}
     fetchData(fetchParams, {

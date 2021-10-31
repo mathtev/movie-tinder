@@ -1,9 +1,8 @@
 import { AxiosRequestConfig } from 'axios';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useState } from 'react';
 import { axiosInstance } from '../axiosInstance';
 import MockAdapter from 'axios-mock-adapter';
 import { recommendations } from '../database/db.json';
-import { useAppState } from './useAppState';
 import useStateCallback from './useStateCallback';
 
 const mock = new MockAdapter(axiosInstance);

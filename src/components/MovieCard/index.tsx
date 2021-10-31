@@ -8,11 +8,12 @@ interface MoviesCardProps {
 }
 
 const MovieCard: React.FC<MoviesCardProps> = ({ recommendation }) => {
+  const rating = Math.floor(recommendation.rating)
   return (
     <div className="movieCard">
       <img src={recommendation.imageURL} alt={recommendation.title} />
       <div className="details">
-        <h2>{recommendation.title}</h2>
+        <h2>{recommendation.title} ({rating}/10)</h2>
         <p>{recommendation.summary}</p>
       </div>
     </div>

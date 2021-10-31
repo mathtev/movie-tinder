@@ -1,6 +1,5 @@
 import React from 'react';
 import Loader from 'react-loader-spinner';
-import { useAppState } from '../../hooks/useAppState';
 import { useAxios } from '../../hooks/useAxios';
 import { getRecommendation } from '../../service/service';
 import MoviesDeck from '../MoviesDeck';
@@ -8,8 +7,6 @@ import MoviesDeck from '../MoviesDeck';
 import './Layout.css';
 
 const Layout: React.FC = () => {
-  const [appState, dispatchAppState] = useAppState();
-
   const { response, fetchData } = useAxios();
 
   React.useEffect(() => {
