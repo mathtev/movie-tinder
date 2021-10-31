@@ -13,10 +13,10 @@ const Layout: React.FC = () => {
     fetchData(getRecommendation);
   }, [fetchData])
 
-  // 2 renders for dispatching loader + 1 for changing loader state
+  // 1 render for changing loader state
   // 1 render for setting data
   // 1 initial render
-  // 5 renders total
+  // 3 renders total
   return (
     <div className="root">
       {response.loading ? (

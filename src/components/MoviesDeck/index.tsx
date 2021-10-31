@@ -43,14 +43,14 @@ const MoviesDeck: React.FC<MoviesDeckProps> = ({ recommendations }) => {
       .map((_, i) => childRefs.current[i] || React.createRef());
   }
 
-  const currentChildRef = React.useRef(cards.length - 1);
+  const currentIndexRef = React.useRef(cards.length - 1);
 
   const handleSlide = async (dir: Direction) => {
     const currentCard = childRefs.current[
-      currentChildRef.current
+      currentIndexRef.current
     ] as MutableRefObject<any>;
     if (
-      currentChildRef.current >= childRefs.current.length ||
+      currentIndexRef.current >= childRefs.current.length ||
       !currentCard.current?.swipe
     ) {
       return;
@@ -67,8 +67,8 @@ const MoviesDeck: React.FC<MoviesDeckProps> = ({ recommendations }) => {
 
   const handleSwipe = (dir: Direction) => {
     dir === 'left' ? handleReject() : handleAccept();
-    currentChildRef.current -= 1;
-    if (currentChildRef.current < 0) {
+    currentIndexRef.current -= 1;
+    if (currentIndexRef.current < 0) {
       setCanSwipe(false);
       return;
     }
@@ -80,7 +80,7 @@ const MoviesDeck: React.FC<MoviesDeckProps> = ({ recommendations }) => {
   };
 
   const handleReject = () => {
-    const card = cards[currentChildRef.current];
+    const card = cards[currentIndexRef.current];
     const fetchParams = {...rejectRecommendation, data: card, id: card.id}
     fetchData(fetchParams, {
       onCompleted: () => console.log('success'),
@@ -92,7 +92,7 @@ const MoviesDeck: React.FC<MoviesDeckProps> = ({ recommendations }) => {
   };
 
   const handleAccept = () => {
-    const card = cards[currentChildRef.current];
+    const card = cards[currentIndexRef.current];
     const fetchParams = {...acceptRecommendation, data: card, id: card.id+'ss'}
     fetchData(fetchParams, {
       onCompleted: () => console.log('success'),
@@ -104,7 +104,7 @@ const MoviesDeck: React.FC<MoviesDeckProps> = ({ recommendations }) => {
   };
 
   // 1 intial render
-  // 1 render on every slide change to add card at the bottom
+  // 1 render on every swipe to add card at the bottom
   return (
     <div className="container">
       <div className="movieDeck">
