@@ -13,7 +13,7 @@ mock.onPut(/\/recommendations\/[A-Za-z0-9]*\/reject/).reply(200);
 
 export interface FetchOpts {
   displayLoader?: boolean;
-  onCompleted?: (data: any) => void;
+  onCompleted?: () => void;
   onError?: (error: Error) => void;
 }
 
@@ -24,8 +24,6 @@ export const useAxios = () => {
   const [error, setError] = useState<Error>();
   const [loading, setLoading] = useState(true);
 
-  const [, dispatchAppState] = useAppState();
-
   const fetchData = useCallback(
     async (axiosParams: FetchParams, options?: FetchOpts) => {
       const { onCompleted, onError } = options || {};
@@ -35,23 +33,18 @@ export const useAxios = () => {
       }
       try {
         result = await axiosInstance.request(axiosParams);
-        onCompleted
-          ? setData(result.data, (d) => onCompleted(d))
-          : setData(result.data);
+        setData(result.data)
+        onCompleted && onCompleted();
+
       } catch (error) {
         setError(error as Error);
-        onError
-          ? onError(error as Error)
-          : dispatchAppState({
-              payload: error,
-              type: 'displayError',
-            });
+        onError && onError(error as Error);
       } finally {
         setLoading(false);
         return result?.data;
       }
     },
-    [dispatchAppState, setData]
+    [setData]
   );
 
   //display loader

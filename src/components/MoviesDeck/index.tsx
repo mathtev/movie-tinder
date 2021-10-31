@@ -5,8 +5,9 @@ import TinderCard from 'react-tinder-card';
 import './MovieDeck.css';
 import { ImCancelCircle } from 'react-icons/im';
 import { AiFillHeart } from 'react-icons/ai';
-import { rejectRecommendation } from '../../service/service';
+import { acceptRecommendation, rejectRecommendation } from '../../service/service';
 import { useAxios } from '../../hooks/useAxios';
+import { useAppState } from '../../hooks/useAppState';
 
 interface MoviesDeckProps {
   recommendations: Recommendation[];
@@ -16,6 +17,8 @@ type Direction = 'left' | 'right' | 'up' | 'down';
 
 const MoviesDeck: React.FC<MoviesDeckProps> = ({ recommendations }) => {
   const { response, fetchData } = useAxios();
+  const [, dispatchAppState] = useAppState();
+
   const [cards, setCards] = React.useState([...recommendations.reverse()]);
 
   // how many cards will be stacked at each other when component is rendered
@@ -82,12 +85,24 @@ const MoviesDeck: React.FC<MoviesDeckProps> = ({ recommendations }) => {
     const fetchParams = {...rejectRecommendation, data: card, id: card.id}
     fetchData(fetchParams, {
       onCompleted: () => console.log('success'),
-      onError: () => console.error('failed')
+      onError: (error) => dispatchAppState({
+          payload: error,
+          type: 'displayError',
+        }),
     });
   };
 
   const handleAccept = () => {
     console.log('Accept');
+    const card = cards[currentChildRef.current];
+    const fetchParams = {...acceptRecommendation, data: card, id: card.id+'ss'}
+    fetchData(fetchParams, {
+      onCompleted: () => console.log('success'),
+      onError: (error) => dispatchAppState({
+          payload: error,
+          type: 'displayError',
+        }),
+    });
   };
 
   // 1 intial render
