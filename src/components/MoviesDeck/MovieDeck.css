@@ -41,3 +41,10 @@
 .transition-over>.react-swipeable-view-container {
   transform: none !important;
 }
+
+.cannotSwipe {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

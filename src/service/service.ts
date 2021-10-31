@@ -1,25 +1,19 @@
-import { FetchOpts, useAxios } from '../hooks/useAxios';
+import { AxiosRequestConfig } from 'axios';
+import { FetchOpts, useAxios as fetchData } from '../hooks/useAxios';
 import { Recommendation } from './types';
 
-export const useGetRecommendations = (options?: FetchOpts) =>
-  useAxios({ url: 'recommendations', method: 'GET' }, options);
 
-export const useAcceptRecommendation = (
-  id: string,
-  data: Recommendation,
-  options?: FetchOpts
-) =>
-  useAxios(
-    { url: `/recommendations/${id}/accept`, method: 'PUT', data },
-    options
-  );
+export const getRecommendation = {
+  url: `/recommendations`,
+  method: 'GET',
+} as AxiosRequestConfig;
 
-export const useRejectRecommendation = (
-  id: string,
-  data: Recommendation,
-  options?: FetchOpts
-) =>
-  useAxios(
-    { url: `/recommendations/${id}/reject`, method: 'PUT', data },
-    options
-  );
+export const acceptRecommendation = {
+  url: `/recommendations/:id/accept`,
+  method: 'PUT',
+} as AxiosRequestConfig;
+
+export const rejectRecommendation = {
+  url: `/recommendations/:id/reject`,
+  method: 'PUT',
+} as AxiosRequestConfig;

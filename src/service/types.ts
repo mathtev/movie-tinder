@@ -1,5 +1,5 @@
 export interface Recommendation {
-  id: number;
+  id: string;
   imageURL: string;
   title: string;
   summary: string;
