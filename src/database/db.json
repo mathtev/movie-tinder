@@ -1,7 +1,35 @@
 {
   "recommendations": [
     {
-      "id": "1and3011",
+      "id": "1and3311",
+      "imageURL": "https://s.lubimyczytac.pl/upload/books/3670000/3670880/507959-352x500.jpg",
+      "title": "Inferno",
+      "summary": "Lorem ipsum….",
+      "rating": 5.3
+    },
+    {
+      "id": "1wnd3011",
+      "imageURL": "https://s.lubimyczytac.pl/upload/books/3670000/3670880/507959-352x500.jpg",
+      "title": "Inferno",
+      "summary": "Lorem ipsum….",
+      "rating": 5.3
+    },
+    {
+      "id": "1wns5011",
+      "imageURL": "https://s.lubimyczytac.pl/upload/books/3670000/3670880/507959-352x500.jpg",
+      "title": "Inferno",
+      "summary": "Lorem ipsum….",
+      "rating": 5.3
+    },
+    {
+      "id": "12nd3011",
+      "imageURL": "https://s.lubimyczytac.pl/upload/books/3670000/3670880/507959-352x500.jpg",
+      "title": "Inferno",
+      "summary": "Lorem ipsum….",
+      "rating": 5.3
+    },
+    {
+      "id": "2wnd3011",
       "imageURL": "https://s.lubimyczytac.pl/upload/books/3670000/3670880/507959-352x500.jpg",
       "title": "Inferno",
       "summary": "Lorem ipsum….",
@@ -15,7 +43,21 @@
       "rating": 8.2
     },
     {
-      "id": "2302abcd",
+      "id": "24402abcd",
+      "imageURL": "https://m.media-amazon.com/images/I/71HBOO7tY5L._AC_SL1500_.jpg",
+      "title": "Joker",
+      "summary": "Lorem ipsum….",
+      "rating": 8.2
+    },
+    {
+      "id": "2302sabsd",
+      "imageURL": "https://m.media-amazon.com/images/I/71HBOO7tY5L._AC_SL1500_.jpg",
+      "title": "Joker",
+      "summary": "Lorem ipsum….",
+      "rating": 8.2
+    },
+    {
+      "id": "230rabsd",
       "imageURL": "https://m.media-amazon.com/images/I/71HBOO7tY5L._AC_SL1500_.jpg",
       "title": "Joker",
       "summary": "Lorem ipsum….",

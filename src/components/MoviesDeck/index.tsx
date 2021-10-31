@@ -19,50 +19,41 @@ const MoviesDeck: React.FC<MoviesDeckProps> = ({ recommendations }) => {
   );
   const [data, setData] = React.useState([...recommendations.reverse()]);
 
-  let canSlide = currentIndex >= 0;
   let canSwipe = true;
+  // how many cards will be stacked at each other when component is rendered
+  const offset = 6;
   const endIndex = currentIndex + 1;
-  const startIndex = endIndex - 3 > 0 ? endIndex - 3 : 0;
+  const startIndex = endIndex - offset > 0 ? endIndex - offset : 0;
+  // these cards will be rendered
   const dataRange = data.slice(startIndex, endIndex);
 
-  const currentIndexRef = React.useRef(dataRange.length - 1);
-
+  // array of refs to each card
   const childRefs = React.useMemo(
     () =>
-      Array(dataRange.length)
+      Array(data.length)
         .fill(0)
         .map((i) => React.createRef()),
-    []
+    [data.length]
   );
+  const currentChildRef = React.useRef<number>(0);
 
   const handleSlide = async (dir: Direction) => {
-    console.log(currentIndexRef.current)
-    const currentCard = childRefs[currentIndexRef.current].current as any;
-    if(currentIndexRef.current <= 0 || !currentCard){
-      canSlide = false;
+    const currentCard = childRefs[currentChildRef.current]?.current as any;
+    if (currentChildRef.current >= childRefs.length || !currentCard?.swipe) {
+      return;
     }
-    if (canSlide && currentIndex < data.length) {
-      canSwipe = false;
-      currentIndexRef.current -= 1;
-      await currentCard.swipe(dir);
-      setCurrentIndex((prevState) => prevState - 1);
-      currentIndexRef.current += 1;
-    }
+    canSwipe = false;
+    currentChildRef.current += 1;
+    // multiple cards can be swiped at once
+    // promise waits for swipe to finish 
+    await currentCard.swipe(dir);
+    setCurrentIndex((prevState) => prevState - 1);
   };
 
   const handleSwipe = () => {
     if (canSwipe) {
       setCurrentIndex((prevState) => prevState - 1);
     }
-  };
-
-  const moveRight = () => {
-    handleReject();
-  };
-
-  const moveLeft = () => {
-    handleAccept();
-    handleSlide('left');
   };
 
   const handleReject = () => {
@@ -77,32 +68,40 @@ const MoviesDeck: React.FC<MoviesDeckProps> = ({ recommendations }) => {
   // 1 render on every slide change
   return (
     <div className="container">
-      <div className="movieDeck">
-        {data.slice(startIndex, endIndex).map((recommendation, idx) => {
-          return (
-            <TinderCard
-              ref={childRefs[idx] as React.Ref<any>}
-              className="swipe"
-              key={recommendation.id}
-              preventSwipe={['up', 'down']}
-              onSwipe={handleSwipe}
-            >
-              <MovieCard
-                key={recommendation.id}
-                recommendation={recommendation}
-              />
-            </TinderCard>
-          );
-        })}
-      </div>
-      <div className="buttons">
-        <button onClick={() => handleSlide('left')}>
-          <ImCancelCircle color="red" />
-        </button>
-        <button onClick={() => handleSlide('right')}>
-          <AiFillHeart color="#4cf14d" />
-        </button>
-      </div>
+      {dataRange.length ? (
+        <>
+          <div className="movieDeck">
+            {data.slice(startIndex, endIndex).map((recommendation, idx) => {
+              //prettier-ignore
+              const childRefIndex = data.length - endIndex - idx + dataRange.length - 1;
+              return (
+                <TinderCard
+                  ref={childRefs[childRefIndex] as React.Ref<any>}
+                  className="swipe"
+                  key={recommendation.id}
+                  preventSwipe={['up', 'down']}
+                  onSwipe={handleSwipe}
+                >
+                  <MovieCard
+                    key={recommendation.id}
+                    recommendation={recommendation}
+                  />
+                </TinderCard>
+              );
+            })}
+          </div>
+          <div className="buttons">
+            <button onClick={() => handleSlide('left')}>
+              <ImCancelCircle color="red" />
+            </button>
+            <button onClick={() => handleSlide('right')}>
+              <AiFillHeart color="#4cf14d" />
+            </button>
+          </div>
+        </>
+      ) : (
+        <h2>No more recommendations</h2>
+      )}
     </div>
   );
 };
