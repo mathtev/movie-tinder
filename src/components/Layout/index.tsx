@@ -20,7 +20,7 @@ const Layout: React.FC = () => {
   return (
     <div className="root">
       {response.loading ? (
-        <Loader type="ThreeDots" color="#00BFFF" height={70} width={70} />
+        <Loader type="ThreeDots" color="#00BFFF" height={50} width={50} />
       ) : (
         response.data && <MoviesDeck recommendations={response.data} />
       )}
