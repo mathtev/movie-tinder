@@ -10,7 +10,7 @@ const Layout: React.FC = () => {
   const { response, fetchData } = useAxios();
 
   React.useEffect(() => {
-    fetchData(getRecommendation);
+    fetchData(getRecommendation, {requestResponse: true});
   }, [fetchData])
 
   // 1 render for changing loader state

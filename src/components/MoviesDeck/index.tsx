@@ -107,6 +107,8 @@ const MoviesDeck: React.FC<MoviesDeckProps> = ({ recommendations }) => {
     });
   };
 
+  console.log('rendr');
+
   // 1 intial render
   // 1 render on every swipe to add card at the bottom
   return (
@@ -119,7 +121,9 @@ const MoviesDeck: React.FC<MoviesDeckProps> = ({ recommendations }) => {
             const childRefIndex = endIndex.current - cardsRange.length + idx;
             return (
               <MovieCard
-                childRef={childRefs.current[childRefIndex] as MutableRefObject<any>}
+                childRef={
+                  childRefs.current[childRefIndex] as MutableRefObject<any>
+                }
                 key={recommendation.id}
                 recommendation={recommendation}
                 handleSwipe={handleSwipe}
