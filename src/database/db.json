@@ -2,10 +2,10 @@
   "recommendations": [
     {
       "id": "1and3311",
-      "imageURL": "https://s.lubimyczytac.pl/upload/books/3670000/3670880/507959-352x500.jpg",
+      "imageURL": "https://fwcdn.pl/cwpo/00/07/7/19.3.jpg",
       "title": "Inferno",
       "summary": "Lorem ipsum….",
-      "rating": 5.3
+      "rating": 9.3
     },
     {
       "id": "1wnd3011",
@@ -16,7 +16,7 @@
     },
     {
       "id": "1wns5011",
-      "imageURL": "https://s.lubimyczytac.pl/upload/books/3670000/3670880/507959-352x500.jpg",
+      "imageURL": "https://fwcdn.pl/cwpo/00/07/7/19.3.jpg",
       "title": "Inferno",
       "summary": "Lorem ipsum….",
       "rating": 5.3
@@ -37,7 +37,7 @@
     },
     {
       "id": "2301abc",
-      "imageURL": "https://cdn.shopify.com/s/files/1/0747/3829/products/mL0379_1024x1024.jpg?v=1571444814",
+      "imageURL": "https://www.wykop.pl/cdn/c3201142/comment_7SpN1fNvhAdEu9tivv2akv2i9KNvCKhM,w400.jpg",
       "title": "Star Wars: Episode VII - The Force Awakens",
       "summary": "Lorem ipsum….",
       "rating": 8.2
@@ -51,15 +51,15 @@
     },
     {
       "id": "2302sabsd",
-      "imageURL": "https://m.media-amazon.com/images/I/71HBOO7tY5L._AC_SL1500_.jpg",
-      "title": "Joker",
+      "imageURL": "https://fwcdn.pl/cwpo/00/07/7/19.3.jpg",
+      "title": "Harry Potter",
       "summary": "Lorem ipsum….",
       "rating": 8.2
     },
     {
       "id": "230rabsd",
-      "imageURL": "https://m.media-amazon.com/images/I/71HBOO7tY5L._AC_SL1500_.jpg",
-      "title": "Joker",
+      "imageURL": "https://www.wykop.pl/cdn/c3201142/comment_7SpN1fNvhAdEu9tivv2akv2i9KNvCKhM,w400.jpg",
+      "title": "The dogs",
       "summary": "Lorem ipsum….",
       "rating": 8.2
     },
@@ -114,7 +114,7 @@
     },
     {
       "id": "2wnde3011",
-      "imageURL": "https://s.lubimyczytac.pl/upload/books/3670000/3670880/507959-352x500.jpg",
+      "imageURL": "https://www.wykop.pl/cdn/c3201142/comment_7SpN1fNvhAdEu9tivv2akv2i9KNvCKhM,w400.jpg",
       "title": "Inferno",
       "summary": "Lorem ipsum….",
       "rating": 5.3
@@ -142,7 +142,7 @@
     },
     {
       "id": "230rbsd",
-      "imageURL": "https://m.media-amazon.com/images/I/71HBOO7tY5L._AC_SL1500_.jpg",
+      "imageURL": "https://fwcdn.pl/cwpo/00/07/7/19.3.jpg",
       "title": "Joker",
       "summary": "Lorem ipsum….",
       "rating": 8.2
@@ -219,8 +219,8 @@
     },
     {
       "id": "230rabzxsd",
-      "imageURL": "https://m.media-amazon.com/images/I/71HBOO7tY5L._AC_SL1500_.jpg",
-      "title": "Joker",
+      "imageURL": "https://fwcdn.pl/cwpo/00/07/7/19.3.jpg",
+      "title": "Harry Potter",
       "summary": "Lorem ipsum….",
       "rating": 8.2
     },
@@ -247,8 +247,8 @@
     },
     {
       "id": "1and3ssd311c",
-      "imageURL": "https://s.lubimyczytac.pl/upload/books/3670000/3670880/507959-352x500.jpg",
-      "title": "Inferno",
+      "imageURL": "https://www.wykop.pl/cdn/c3201142/comment_7SpN1fNvhAdEu9tivv2akv2i9KNvCKhM,w400.jpg",
+      "title": "The Dogs",
       "summary": "Lorem ipsum….",
       "rating": 5.3
     },
@@ -275,8 +275,8 @@
     },
     {
       "id": "2wndekl3011",
-      "imageURL": "https://s.lubimyczytac.pl/upload/books/3670000/3670880/507959-352x500.jpg",
-      "title": "Inferno",
+      "imageURL": "https://fwcdn.pl/cwpo/00/07/7/19.3.jpg",
+      "title": "Harry Potter",
       "summary": "Lorem ipsum….",
       "rating": 5.3
     },
