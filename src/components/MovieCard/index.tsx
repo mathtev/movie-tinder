@@ -1,7 +1,9 @@
+import { useWindowSize } from '@react-hook/window-size';
 import React, { MutableRefObject } from 'react';
 import TinderCard from 'react-tinder-card';
 import { Recommendation } from '../../service/types';
 import { Direction } from '../MoviesDeck';
+
 
 import './MovieCard.css';
 
@@ -11,12 +13,13 @@ interface MoviesCardProps {
   handleSwipe: (dir: Direction) => void;
 }
 
-
 const MovieCard: React.FC<MoviesCardProps> = ({
   recommendation,
   childRef,
   handleSwipe,
 }) => {
+  const [width, height] = useWindowSize();
+  const swipeThreshold = width * height / 1000;
   const rating = Math.floor(recommendation.rating);
   return (
     <TinderCard
@@ -25,7 +28,7 @@ const MovieCard: React.FC<MoviesCardProps> = ({
       key={recommendation.id}
       onSwipe={handleSwipe}
       preventSwipe={['up', 'down']}
-      swipeThreshold={1000}
+      swipeThreshold={swipeThreshold}
     >
       <div className="movieCard">
         <img src={recommendation.imageURL} alt={recommendation.title} />
