@@ -1,14 +1,8 @@
 import { AxiosRequestConfig } from 'axios';
 import { useCallback, useState } from 'react';
 import { axiosInstance } from '../axiosInstance';
-import MockAdapter from 'axios-mock-adapter';
-import { recommendations } from '../database/db.json';
 import useStateCallback from './useStateCallback';
 
-const mock = new MockAdapter(axiosInstance);
-mock.onGet('/recommendations').reply(200, recommendations);
-mock.onPut(/\/recommendations\/[A-Za-z0-9]*\/accept/).reply(200);
-mock.onPut(/\/recommendations\/[A-Za-z0-9]*\/reject/).reply(200);
 
 export interface FetchOpts {
   displayLoader?: boolean;
