@@ -5,7 +5,10 @@ import TinderCard from 'react-tinder-card';
 import './MovieDeck.css';
 import { ImCancelCircle } from 'react-icons/im';
 import { AiFillHeart } from 'react-icons/ai';
-import { acceptRecommendation, rejectRecommendation } from '../../service/service';
+import {
+  acceptRecommendation,
+  rejectRecommendation,
+} from '../../service/service';
 import { useAxios } from '../../hooks/useAxios';
 import { useAppState } from '../../hooks/useAppState';
 
@@ -13,12 +16,12 @@ interface MoviesDeckProps {
   recommendations: Recommendation[];
 }
 
-type Direction = 'left' | 'right' | 'up' | 'down';
+export type Direction = 'left' | 'right' | 'up' | 'down';
 
 const MoviesDeck: React.FC<MoviesDeckProps> = ({ recommendations }) => {
   const { fetchData } = useAxios();
   const [, dispatchAppState] = useAppState();
-  // eslint-disable-next-line 
+  // eslint-disable-next-line
   const [cards, setCards] = React.useState([...recommendations.reverse()]);
 
   // how many cards will be stacked at each other when component is rendered
@@ -81,10 +84,11 @@ const MoviesDeck: React.FC<MoviesDeckProps> = ({ recommendations }) => {
 
   const handleReject = () => {
     const card = cards[currentIndexRef.current];
-    const fetchParams = {...rejectRecommendation, data: card, id: card.id}
+    const fetchParams = { ...rejectRecommendation, data: card, id: card.id };
     fetchData(fetchParams, {
       onCompleted: () => console.log('success'),
-      onError: (error) => dispatchAppState({
+      onError: (error) =>
+        dispatchAppState({
           payload: error,
           type: 'displayError',
         }),
@@ -93,10 +97,11 @@ const MoviesDeck: React.FC<MoviesDeckProps> = ({ recommendations }) => {
 
   const handleAccept = () => {
     const card = cards[currentIndexRef.current];
-    const fetchParams = {...acceptRecommendation, data: card, id: card.id+'ss'}
+    const fetchParams = { ...acceptRecommendation, data: card, id: card.id };
     fetchData(fetchParams, {
       onCompleted: () => console.log('success'),
-      onError: (error) => dispatchAppState({
+      onError: (error) =>
+        dispatchAppState({
           payload: error,
           type: 'displayError',
         }),
@@ -114,18 +119,12 @@ const MoviesDeck: React.FC<MoviesDeckProps> = ({ recommendations }) => {
             //prettier-ignore
             const childRefIndex = endIndex.current - cardsRange.length + idx;
             return (
-              <TinderCard
-                ref={childRefs.current[childRefIndex] as MutableRefObject<any>}
-                className="swipe"
+              <MovieCard
+                childRef={childRefs.current[childRefIndex] as MutableRefObject<any>}
                 key={recommendation.id}
-                preventSwipe={['up', 'down']}
-                onSwipe={handleSwipe}
-              >
-                <MovieCard
-                  key={recommendation.id}
-                  recommendation={recommendation}
-                />
-              </TinderCard>
+                recommendation={recommendation}
+                handleSwipe={handleSwipe}
+              />
             );
           })}
       </div>
