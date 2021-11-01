@@ -24,8 +24,6 @@ const MovieCard: React.FC<MoviesCardProps> = ({
       key={recommendation.id}
       onSwipe={handleSwipe}
       preventSwipe={['up', 'down']}
-      swipeRequirementType="position"
-      swipeThreshold={500}
   >
       <div className="movieCard">
         <img src={recommendation.imageURL} alt={recommendation.title} />
