@@ -1,7 +1,6 @@
 import React, { MutableRefObject } from 'react';
 import { Recommendation } from '../../service/types';
 import MovieCard from '../MovieCard';
-import TinderCard from 'react-tinder-card';
 import './MovieDeck.css';
 import { ImCancelCircle } from 'react-icons/im';
 import { AiFillHeart } from 'react-icons/ai';

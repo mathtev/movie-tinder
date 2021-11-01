@@ -11,7 +11,11 @@ interface MoviesCardProps {
   handleSwipe: (dir: Direction) => void;
 }
 
-const MovieCard: React.FC<MoviesCardProps> = ({ recommendation, childRef, handleSwipe }) => {
+const MovieCard: React.FC<MoviesCardProps> = ({
+  recommendation,
+  childRef,
+  handleSwipe,
+}) => {
   const rating = Math.floor(recommendation.rating);
   return (
     <TinderCard
@@ -20,6 +24,7 @@ const MovieCard: React.FC<MoviesCardProps> = ({ recommendation, childRef, handle
       key={recommendation.id}
       onSwipe={handleSwipe}
       preventSwipe={['up', 'down']}
+      swipeThreshold={2000}
     >
       <div className="movieCard">
         <img src={recommendation.imageURL} alt={recommendation.title} />
