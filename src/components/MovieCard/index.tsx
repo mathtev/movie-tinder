@@ -4,7 +4,6 @@ import TinderCard from 'react-tinder-card';
 import { Recommendation } from '../../service/types';
 import { Direction } from '../MoviesDeck';
 
-
 import './MovieCard.css';
 
 interface MoviesCardProps {
@@ -19,15 +18,33 @@ const MovieCard: React.FC<MoviesCardProps> = ({
   handleSwipe,
 }) => {
   const [width, height] = useWindowSize();
-  const swipeThreshold = width * height / 1000;
+  const requirementFulfilled = React.useRef(true);
+  const swipeThreshold = (width * height) / 3000;
   const rating = Math.floor(recommendation.rating);
+
+  const handleFulfilled = (dir: Direction) => {
+    if (dir === 'left' || dir === 'right') {
+      requirementFulfilled.current = true;
+    } else {
+      requirementFulfilled.current = false;
+    }
+  };
+
+  const prepareSwipe = (dir: Direction) => {
+    if (requirementFulfilled.current) {
+      handleSwipe(dir);
+    }
+  };
+
   return (
     <TinderCard
       ref={childRef}
       className="swipe"
       key={recommendation.id}
-      onSwipe={handleSwipe}
+      onSwipe={prepareSwipe}
       preventSwipe={['up', 'down']}
+      swipeRequirementType="position"
+      onSwipeRequirementFulfilled={(dir) => handleFulfilled(dir)}
       swipeThreshold={swipeThreshold}
     >
       <div className="movieCard">
